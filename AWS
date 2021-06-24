@@ -1,0 +1,38 @@
+import boto3
+client = boto3.client('ec2')
+
+//////////////////////////////////
+Key_Pair = client.create_key_pair(
+    KeyName='_______',
+)
+
+
+////////////////////////////////
+instance = client.run_instances(
+    ImageId='___________________',
+    InstanceType='t2.micro',
+    KeyName='_________',
+    MaxCount=1,
+    MinCount=1,
+    SecurityGroupIds=[
+        '___________',
+    ],
+    SecurityGroups=[
+        '___________',
+    ],
+)
+
+
+//////////////////////////////////
+EBS_Volume = client.create_volume(
+    AvailabilityZone='___________',
+    Size=5,
+)
+
+
+/////////////////////////////////////
+Attach_Volume = client.attach_volume(
+    Device='___________',
+    InstanceId='____________',
+    VolumeId='____________',
+)
